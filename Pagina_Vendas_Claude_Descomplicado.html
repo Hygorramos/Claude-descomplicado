@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Descomplicado — Aprenda a usar a IA que trabalha por você</title>
+<meta name="description" content="O guia completo para usar a Inteligência Artificial que pensa, escreve e trabalha por você. Do zero ao domínio, em 10 passos simples.">
+
+<!-- ============================================================
+     LINK DE PAGAMENTO (Hotmart) — usado em TODOS os botões.
+     Se mudar o link, troque em todos os href="...".
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0D0A18; --bg2:#120C24; --bg3:#170F2E;
+  --v:#7C3AED; --vl:#A78BFA; --vs:#C4B5FD; --vd:#4C1D95;
+  --amber:#F5B041; --amber2:#F59E0B;
+  --mint:#35D6A4;
+  --ink:#EDE9F7; --muted:#B4ADC9; --dim:#8A83A6;
+  --line:#2A1F49;
+  --card:#150F2A;
+  --maxw:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif; line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:'Sora',sans-serif; line-height:1.08; letter-spacing:-.02em}
+a{color:inherit; text-decoration:none}
+img,svg{display:block; max-width:100%}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+.center{text-align:center}
+
+/* ---------- BOTÃO CTA ---------- */
+.cta{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  background:linear-gradient(180deg,var(--amber),var(--amber2));
+  color:#241503; font-family:'Sora',sans-serif; font-weight:800;
+  font-size:1.06rem; padding:18px 34px; border-radius:14px; border:0;
+  cursor:pointer; text-align:center; line-height:1.15;
+  box-shadow:0 10px 30px rgba(245,158,11,.32), inset 0 1px 0 rgba(255,255,255,.4);
+  transition:transform .16s ease, box-shadow .16s ease;
+}
+.cta:hover{transform:translateY(-2px); box-shadow:0 16px 40px rgba(245,158,11,.44), inset 0 1px 0 rgba(255,255,255,.5)}
+.cta:focus-visible{outline:3px solid var(--vs); outline-offset:3px}
+.cta .sub{display:block; font-family:'Inter'; font-weight:600; font-size:.72rem; opacity:.8; margin-top:2px}
+.cta-big{font-size:1.22rem; padding:22px 44px; width:100%; max-width:520px}
+.cta-note{color:var(--dim); font-size:.86rem; margin-top:12px}
+
+/* ---------- TOP BAR ---------- */
+.topbar{
+  position:sticky; top:0; z-index:60;
+  background:rgba(13,10,24,.86); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex; align-items:center; gap:16px; padding-top:11px; padding-bottom:11px}
+.brand{display:flex; align-items:center; gap:10px; font-family:'Sora'; font-weight:700; font-size:.98rem}
+.brand .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--v),var(--vd));display:grid;place-items:center;flex:none}
+.brand .dot svg{width:16px;height:16px}
+.topbar .spacer{flex:1}
+.topbar .offer{color:var(--vs); font-size:.86rem; font-weight:600}
+.topbar .offer b{color:var(--amber)}
+.topbar .cta{padding:11px 20px; font-size:.92rem; border-radius:11px}
+@media(max-width:720px){ .topbar .offer{display:none} .topbar .brand span{display:none} }
+
+/* ---------- HERO ---------- */
+.hero{position:relative; padding:64px 0 40px}
+.hero:before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(680px 420px at 78% 12%, rgba(124,58,237,.34), transparent 60%),
+    radial-gradient(560px 380px at 6% 82%, rgba(167,139,250,.16), transparent 60%);
+}
+.hero .wrap{position:relative; z-index:1; display:grid; grid-template-columns:1.06fr .94fr; gap:44px; align-items:center}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:9px; margin-bottom:22px;
+  border:1px solid rgba(167,139,250,.4); color:var(--vs);
+  padding:7px 15px; border-radius:40px; font-size:.82rem; font-weight:600; letter-spacing:.01em;
+}
+.eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(53,214,164,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(53,214,164,.5)}70%{box-shadow:0 0 0 9px rgba(53,214,164,0)}100%{box-shadow:0 0 0 0 rgba(53,214,164,0)}}
+.hero h1{font-size:clamp(2.3rem,4.6vw,3.5rem); font-weight:800}
+.hero h1 .hl{color:var(--vl)}
+.hero .lead{color:var(--muted); font-size:1.12rem; margin:22px 0 20px; max-width:33em}
+.hero .lead b{color:var(--ink)}
+.ticks{list-style:none; margin:0 0 30px; display:grid; gap:11px}
+.ticks li{display:flex; align-items:flex-start; gap:11px; color:#D8D2E8; font-size:1.02rem}
+.ticks svg{width:22px;height:22px;flex:none;margin-top:1px}
+.hero-cta-row{display:flex; align-items:center; gap:18px; flex-wrap:wrap}
+.guarantee-inline{display:flex; align-items:center; gap:9px; color:var(--muted); font-size:.9rem}
+.guarantee-inline svg{width:26px;height:26px;flex:none}
+
+/* ---------- MOCKUP DO EBOOK ---------- */
+.book-stage{position:relative; display:grid; place-items:center; min-height:440px}
+.book-glow{position:absolute; width:340px; height:340px; border-radius:50%;
+  background:radial-gradient(circle, rgba(124,58,237,.45), transparent 62%); filter:blur(6px)}
+.book{
+  position:relative; width:288px; aspect-ratio:1/1.41; border-radius:6px 12px 12px 6px;
+  background:linear-gradient(158deg,#1B1140 0%,#0F0A20 60%,#0B0715 100%);
+  box-shadow:
+    -14px 0 0 0 #0A0713, -14px 0 22px rgba(0,0,0,.5),
+    0 40px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(167,139,250,.18);
+  transform:rotateY(-16deg) rotateX(4deg) rotateZ(-1deg);
+  transform-style:preserve-3d; overflow:hidden;
+  animation:float 6.5s ease-in-out infinite;
+}
+.book:after{content:""; position:absolute; left:0; top:0; bottom:0; width:12px;
+  background:linear-gradient(90deg, rgba(255,255,255,.12), transparent); }
+@keyframes float{0%,100%{transform:rotateY(-16deg) rotateX(4deg) translateY(0)}50%{transform:rotateY(-13deg) rotateX(4deg) translateY(-14px)}}
+.book .bk-tag{position:absolute; top:20px; left:20px; font-size:.52rem; letter-spacing:.18em;
+  color:var(--vs); border:1px solid rgba(167,139,250,.45); padding:4px 9px; border-radius:20px; font-weight:600}
+.book .bk-bar{position:absolute; top:92px; left:22px; width:34px; height:4px; border-radius:3px;background:linear-gradient(90deg,var(--v),var(--vl))}
+.book .bk-title{position:absolute; top:104px; left:22px; right:18px; font-family:'Sora'; font-weight:800; line-height:.98}
+.book .bk-title .l1{font-size:1.72rem; color:#F5F2FC}
+.book .bk-title .l2{font-size:1.72rem; color:var(--vl)}
+.book .bk-sub{position:absolute; top:186px; left:22px; right:26px; font-size:.62rem; color:#C9C2DE; line-height:1.45}
+.book .bk-badge{position:absolute; top:250px; left:22px; font-size:.5rem; font-weight:700; letter-spacing:.06em;
+  color:#DDD3F7; background:rgba(124,58,237,.2); border:1px solid rgba(124,58,237,.5); padding:6px 10px; border-radius:8px}
+.book .bk-robot{position:absolute; right:-6px; bottom:52px; width:150px; opacity:.98}
+.book .bk-foot{position:absolute; bottom:20px; left:22px}
+.book .bk-foot .by{font-size:.44rem; letter-spacing:.16em; color:#8A82A6}
+.book .bk-foot .nm{font-size:.82rem; font-weight:800; color:#F3F0FB; font-family:'Sora'}
+.book-badge-float{position:absolute; z-index:3; right:2px; top:24px;
+  background:linear-gradient(180deg,var(--amber),var(--amber2)); color:#241503;
+  font-family:'Sora'; font-weight:800; font-size:.9rem; padding:12px 15px; border-radius:14px;
+  box-shadow:0 12px 26px rgba(245,158,11,.4); text-align:center; transform:rotate(6deg)}
+.book-badge-float small{display:block; font-family:'Inter'; font-weight:600; font-size:.56rem; opacity:.8}
+
+/* ---------- FAIXA NÚMEROS ---------- */
+.stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg2)}
+.stats .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; padding:26px 22px}
+.stat{text-align:center}
+.stat .n{font-family:'Sora'; font-weight:800; font-size:2rem; color:var(--vl)}
+.stat .l{color:var(--muted); font-size:.86rem; margin-top:2px}
+@media(max-width:640px){ .stats .wrap{grid-template-columns:repeat(2,1fr); gap:22px 10px} }
+
+/* ---------- SEÇÕES ---------- */
+section{position:relative}
+.sec{padding:78px 0}
+.sec-head{max-width:40rem; margin-bottom:40px}
+.sec-head.mid{margin-left:auto;margin-right:auto;text-align:center}
+.kick{color:var(--vl); font-weight:700; font-size:.9rem; margin-bottom:12px; font-family:'Sora'}
+.sec h2{font-size:clamp(1.7rem,3.4vw,2.5rem); font-weight:800}
+.sec h2 .hl{color:var(--vl)}
+.sec .desc{color:var(--muted); font-size:1.08rem; margin-top:16px}
+
+/* dor */
+.pain-sec{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.pains{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.pain{display:flex; gap:13px; align-items:flex-start; background:var(--card);
+  border:1px solid var(--line); border-radius:14px; padding:18px 20px}
+.pain svg{width:22px;height:22px;flex:none;margin-top:2px}
+.pain p{color:#D2CCE2; font-size:1rem}
+.pain-turn{margin-top:34px; text-align:center; font-size:1.22rem; color:var(--ink); font-weight:600}
+.pain-turn b{color:var(--amber)}
+
+/* módulos */
+.mods{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.mod{position:relative; background:var(--card); border:1px solid var(--line);
+  border-radius:16px; padding:24px 24px 22px; overflow:hidden}
+.mod:before{content:attr(data-n); position:absolute; top:14px; right:18px;
+  font-family:'Sora'; font-weight:800; font-size:2.6rem; color:rgba(167,139,250,.12)}
+.mod h3{font-size:1.14rem; font-weight:700; margin-bottom:8px; padding-right:40px}
+.mod p{color:var(--muted); font-size:.96rem}
+@media(max-width:760px){ .mods{grid-template-columns:1fr} .pains{grid-template-columns:1fr} }
+
+/* bônus / stack */
+.bonus-sec{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.stack{max-width:720px; margin:0 auto; background:var(--card);
+  border:1px solid var(--line); border-radius:20px; padding:12px 12px 26px}
+.stack-row{display:flex; align-items:center; gap:16px; padding:18px 18px; border-bottom:1px solid var(--line)}
+.stack-row:last-of-type{border-bottom:0}
+.stack-ico{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(76,29,149,.25));
+  border:1px solid rgba(167,139,250,.3); display:grid; place-items:center; flex:none}
+.stack-ico svg{width:24px;height:24px}
+.stack-txt{flex:1}
+.stack-txt b{display:block; font-family:'Sora'; font-weight:700; font-size:1.02rem}
+.stack-txt span{color:var(--muted); font-size:.9rem}
+.stack-val{color:var(--dim); font-weight:700; font-size:.98rem; white-space:nowrap}
+.stack-val s{opacity:.9}
+.stack-total{display:flex; justify-content:space-between; align-items:center; padding:22px 18px 6px; flex-wrap:wrap; gap:8px}
+.stack-total .lbl{color:var(--muted)}
+.stack-total .amt{font-family:'Sora'; font-weight:800; font-size:1.2rem}
+.stack-total .amt s{color:var(--dim)}
+
+/* método */
+.method-sec{background:var(--bg)}
+.p4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:8px}
+.p4 .p{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 18px; text-align:center}
+.p4 .p .big{font-family:'Sora'; font-weight:800; font-size:2.4rem;
+  background:linear-gradient(135deg,var(--vl),var(--v)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.p4 .p b{display:block; font-family:'Sora'; margin-top:6px; font-size:1.02rem}
+.p4 .p span{color:var(--muted); font-size:.85rem; display:block; margin-top:4px}
+@media(max-width:640px){ .p4{grid-template-columns:1fr 1fr} }
+
+/* para quem */
+.who-sec{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.who{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+.who-col{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px}
+.who-col.yes{border-color:rgba(53,214,164,.35)}
+.who-col.no{border-color:rgba(245,176,65,.28)}
+.who-col h3{font-size:1.2rem; margin-bottom:16px; display:flex; align-items:center; gap:10px}
+.who-col h3 svg{width:28px;height:28px;flex:none}
+.who-col ul{list-style:none; display:grid; gap:12px}
+.who-col li{display:flex; gap:11px; align-items:flex-start; color:#D2CCE2; font-size:.98rem}
+.who-col li svg{width:20px;height:20px;flex:none;margin-top:2px}
+@media(max-width:760px){ .who{grid-template-columns:1fr} }
+
+/* OFERTA */
+.offer-sec{padding:80px 0}
+.offer-sec:before{content:""; position:absolute; inset:0;
+  background:radial-gradient(700px 460px at 50% 0%, rgba(124,58,237,.28), transparent 62%)}
+.offer-card{position:relative; max-width:600px; margin:0 auto; text-align:center;
+  background:linear-gradient(180deg,var(--bg3),var(--bg2));
+  border:1px solid rgba(167,139,250,.32); border-radius:26px;
+  padding:44px 34px; box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.offer-card .flag{display:inline-block; background:rgba(53,214,164,.14); border:1px solid rgba(53,214,164,.4);
+  color:var(--mint); font-weight:700; font-size:.82rem; padding:7px 16px; border-radius:30px; margin-bottom:22px}
+.offer-card h2{font-size:1.7rem; margin-bottom:6px}
+.offer-card .from{color:var(--dim); font-size:1.05rem; margin-top:18px}
+.offer-card .from s{color:var(--dim)}
+.price{margin:6px 0 4px; display:flex; align-items:baseline; justify-content:center; gap:6px}
+.price .cur{font-family:'Sora'; font-weight:700; font-size:1.5rem; color:var(--ink)}
+.price .val{font-family:'Sora'; font-weight:800; font-size:4.4rem; color:#fff; line-height:1}
+.price .cents{font-family:'Sora'; font-weight:800; font-size:1.7rem; color:#fff}
+.installment{color:var(--vs); font-size:1.05rem; font-weight:600; margin-bottom:26px}
+.installment b{color:var(--amber)}
+.offer-list{list-style:none; text-align:left; max-width:400px; margin:0 auto 28px; display:grid; gap:11px}
+.offer-list li{display:flex; gap:10px; align-items:flex-start; color:#D8D2E8; font-size:.98rem}
+.offer-list svg{width:20px;height:20px;flex:none;margin-top:2px}
+.pay-icons{margin-top:16px; color:var(--dim); font-size:.82rem}
+
+/* garantia */
+.guarantee{max-width:640px; margin:36px auto 0; display:flex; gap:22px; align-items:center;
+  background:var(--card); border:1px solid rgba(53,214,164,.28); border-radius:20px; padding:26px 28px}
+.guarantee .seal{width:92px;height:92px;flex:none}
+.guarantee h3{font-size:1.16rem; margin-bottom:6px}
+.guarantee p{color:var(--muted); font-size:.96rem}
+@media(max-width:560px){ .guarantee{flex-direction:column; text-align:center} }
+
+/* FAQ */
+.faq-sec{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.faq-list{max-width:760px; margin:0 auto; display:grid; gap:12px}
+.faq{background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.faq summary{list-style:none; cursor:pointer; padding:20px 22px; display:flex; justify-content:space-between; align-items:center; gap:16px;
+  font-family:'Sora'; font-weight:600; font-size:1.04rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .plus{width:24px;height:24px;flex:none; position:relative; transition:transform .2s}
+.faq summary .plus:before,.faq summary .plus:after{content:""; position:absolute; background:var(--vl); border-radius:2px}
+.faq summary .plus:before{left:5px; right:5px; top:11px; height:2px}
+.faq summary .plus:after{top:5px; bottom:5px; left:11px; width:2px}
+.faq[open] summary .plus{transform:rotate(135deg)}
+.faq .ans{padding:0 22px 20px; color:var(--muted); font-size:.98rem}
+
+/* CTA FINAL */
+.final-sec{padding:84px 0 96px; text-align:center; position:relative}
+.final-sec:before{content:""; position:absolute; inset:0;
+  background:radial-gradient(600px 380px at 50% 40%, rgba(124,58,237,.26), transparent 60%)}
+.final-sec .wrap{position:relative}
+.final-sec h2{font-size:clamp(1.8rem,3.6vw,2.6rem); max-width:22em; margin:0 auto 18px}
+.final-sec p{color:var(--muted); font-size:1.1rem; max-width:36em; margin:0 auto 32px}
+
+/* rodapé */
+footer{border-top:1px solid var(--line); padding:40px 0 120px; color:var(--dim); font-size:.84rem}
+footer .wrap{display:grid; gap:14px; text-align:center}
+footer .fbrand{font-family:'Sora'; font-weight:700; color:var(--muted); font-size:1rem}
+footer .legal{max-width:60em; margin:0 auto; line-height:1.6}
+
+/* sticky mobile CTA */
+.sticky-mobile{position:fixed; left:0; right:0; bottom:0; z-index:70;
+  background:rgba(13,10,24,.95); backdrop-filter:blur(10px); border-top:1px solid var(--line);
+  padding:12px 16px; display:none; align-items:center; gap:12px}
+.sticky-mobile .sm-price{flex:none; line-height:1.1}
+.sticky-mobile .sm-price s{color:var(--dim); font-size:.72rem; display:block}
+.sticky-mobile .sm-price b{font-family:'Sora'; font-weight:800; font-size:1.2rem; color:var(--amber)}
+.sticky-mobile .cta{flex:1; padding:14px 16px; font-size:1rem}
+@media(max-width:760px){ .sticky-mobile{display:flex} footer{padding-bottom:110px} }
+
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr; gap:20px}
+  .book-stage{order:-1; min-height:380px}
+  .hero{padding-top:40px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none !important; scroll-behavior:auto !important}
+  .cta{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.9 6.1L20 11l-6.1 1.9L12 19l-1.9-6.1L4 11l6.1-1.9L12 3z" fill="#C4B5FD"/></svg>
+      </span>
+      <span>Claude Descomplicado</span>
+    </div>
+    <div class="spacer"></div>
+    <div class="offer">Oferta de lançamento · <b>40% OFF</b> por tempo limitado</div>
+    <a class="cta" href="https://pay.hotmart.com/F107447209F?bid=1788400949649" target="_blank" rel="noopener">Quero meu acesso</a>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="pulse"></span> Do zero ao domínio — sem enrolação</span>
+      <h1>Aprenda a usar a Inteligência Artificial que <span class="hl">pensa, escreve e trabalha por você</span>.</h1>
+      <p class="lead">O guia completo, em português e passo a passo, para você dominar o Claude e ganhar tempo todo dia — <b>mesmo que você nunca tenha usado IA</b> e ache que "isso não é pra você".</p>
+      <ul class="ticks">
+        <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(53,214,164,.15)"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Escreva e-mails, mensagens e textos em segundos</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(53,214,164,.15)"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Estude, organize a rotina e produza mais no trabalho</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(53,214,164,.15)"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Leve <b>30 prompts prontos</b> pra copiar, colar e usar</li>
+      </ul>
+      <div class="hero-cta-row">
+        <a class="cta" href="https://pay.hotmart.com/F107447209F?bid=1788400949649" target="_blank" rel="noopener">
+          Quero destravar a IA agora
+          <span class="sub">acesso imediato · garantia de 7 dias</span>
+        </a>
+        <div class="guarantee-inline">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 4.4-3 8.3-7 9-4-.7-7-4.6-7-9V5l7-3z" fill="rgba(53,214,164,.15)" stroke="#35D6A4" stroke-width="1.6"/><path d="M8.5 12l2.3 2.3L15.5 9" stroke="#35D6A4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Risco zero:<br>7 dias de garantia
+        </div>
+      </div>
+    </div>
+
+    <!-- MOCKUP -->
+    <div class="book-stage">
+      <div class="book-glow"></div>
+      <div class="book-badge-float">57 páginas<small>+ bônus completos</small></div>
+      <div class="book" role="img" aria-label="Capa do ebook Claude Descomplicado">
+        <span class="bk-tag">CLAUDE VAI ENSINAR</span>
+        <span class="bk-bar"></span>
+        <div class="bk-title"><div class="l1">CLAUDE</div><div class="l2">DESCOMPLI&shy;CADO</div></div>
+        <div class="bk-sub">O guia completo para usar a IA que pensa, escreve e trabalha por você — em 10 módulos práticos.</div>
+        <span class="bk-badge">10 MÓDULOS · PROMPTS PRONTOS</span>
+        <svg class="bk-robot" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="rb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#4C1D95"/></linearGradient>
+          </defs>
+          <line x1="100" y1="34" x2="100" y2="20" stroke="#A78BFA" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="100" cy="16" r="5" fill="#F5B041"/>
+          <rect x="58" y="34" width="84" height="70" rx="20" fill="url(#rb)" stroke="#A78BFA" stroke-width="2.5"/>
+          <rect x="70" y="48" width="60" height="42" rx="12" fill="#0F0A1E" opacity=".55"/>
+          <circle cx="86" cy="70" r="6.5" fill="#C4B5FD"/><circle cx="88" cy="68" r="2" fill="#fff"/>
+          <circle cx="114" cy="70" r="6.5" fill="#C4B5FD"/><circle cx="116" cy="68" r="2" fill="#fff"/>
+          <path d="M86 84 Q100 93 114 84" stroke="#C4B5FD" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="bk-foot"><div class="by">POR</div><div class="nm">Hygor Ramos</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= STATS ================= -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">57</div><div class="l">páginas de conteúdo</div></div>
+    <div class="stat"><div class="n">10</div><div class="l">módulos passo a passo</div></div>
+    <div class="stat"><div class="n">30</div><div class="l">prompts prontos</div></div>
+    <div class="stat"><div class="n">30</div><div class="l">dias de plano de ação</div></div>
+  </div>
+</div>
+
+<!-- ================= DOR ================= -->
+<section class="sec pain-sec">
+  <div class="wrap">
+    <div class="sec-head mid">
+      <div class="kick">Talvez você se identifique</div>
+      <h2>Todo mundo fala de IA. Mas ninguém te ensinou a usar de verdade.</h2>
+    </div>
+    <div class="pains">
+      <div class="pain"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(245,176,65,.14)"/><path d="M12 7v6M12 16.5v.5" stroke="#F5B041" stroke-width="2.2" stroke-linecap="round"/></svg><p>Você abre a ferramenta, olha pra tela em branco e não sabe o que digitar.</p></div>
+      <div class="pain"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(245,176,65,.14)"/><path d="M12 7v6M12 16.5v.5" stroke="#F5B041" stroke-width="2.2" stroke-linecap="round"/></svg><p>Já tentou, mas veio uma resposta genérica e você achou que "não era pra você".</p></div>
+      <div class="pain"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(245,176,65,.14)"/><path d="M12 7v6M12 16.5v.5" stroke="#F5B041" stroke-width="2.2" stroke-linecap="round"/></svg><p>Perde horas escrevendo e-mails, legendas e mensagens que a IA faria em segundos.</p></div>
+      <div class="pain"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(245,176,65,.14)"/><path d="M12 7v6M12 16.5v.5" stroke="#F5B041" stroke-width="2.2" stroke-linecap="round"/></svg><p>Vê todo mundo lucrando com IA e sente que está ficando pra trás.</p></div>
+      <div class="pain"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(245,176,65,.14)"/><path d="M12 7v6M12 16.5v.5" stroke="#F5B041" stroke-width="2.2" stroke-linecap="round"/></svg><p>Tem medo de "fazer errado" ou de que seja complicado demais pra aprender.</p></div>
+      <div class="pain"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(245,176,65,.14)"/><path d="M12 7v6M12 16.5v.5" stroke="#F5B041" stroke-width="2.2" stroke-linecap="round"/></svg><p>Assistiu mil vídeos soltos e continua sem um caminho claro do começo ao fim.</p></div>
+    </div>
+    <p class="pain-turn">A verdade? O problema nunca foi você. <b>Foi ninguém ter te mostrado como pedir.</b></p>
+  </div>
+</section>
+
+<!-- ================= VIRADA ================= -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head mid">
+      <div class="kick">A virada de chave</div>
+      <h2>Um caminho simples, do primeiro clique ao <span class="hl">domínio total</span></h2>
+      <p class="desc">O <b>Claude Descomplicado</b> pega você exatamente onde está — do zero — e te leva, passo a passo, a usar a IA pra resolver problemas reais do seu dia: escrever, estudar, trabalhar, criar conteúdo e até abrir novas fontes de renda. Sem termo difícil. Sem enrolação. Só o que funciona.</p>
+    </div>
+    <div class="center">
+      <a class="cta" href="https://pay.hotmart.com/F107447209F?bid=1788400949649" target="_blank" rel="noopener">Quero começar hoje</a>
+      <div class="cta-note">Acesso imediato após a compra · leia no celular ou no computador</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MÓDULOS ================= -->
+<section class="sec" style="background:linear-gradient(180deg,var(--bg),var(--bg2))">
+  <div class="wrap">
+    <div class="sec-head mid">
+      <div class="kick">O que você vai dominar</div>
+      <h2>10 módulos, na ordem certa pra você evoluir de verdade</h2>
+      <p class="desc">Cada módulo entrega uma pequena vitória e prepara o próximo. Com exemplos reais, prompts prontos, exercícios e checklists.</p>
+    </div>
+    <div class="mods">
+      <div class="mod" data-n="01"><h3>Entendendo o Claude</h3><p>O que a IA é, o que faz e por que você não precisa ter medo. A base de tudo.</p></div>
+      <div class="mod" data-n="02"><h3>Começando do zero</h3><p>Conta, acesso e sua primeira conversa que já resolve um problema real.</p></div>
+      <div class="mod" data-n="03"><h3>Conversando com o Claude</h3><p>O segredo de saber pedir — a diferença entre resposta genérica e resposta perfeita.</p></div>
+      <div class="mod" data-n="04"><h3>A Fórmula do Pedido Perfeito</h3><p>O método dos 4 P: monte pedidos profissionais em segundos, pra qualquer tarefa.</p></div>
+      <div class="mod" data-n="05"><h3>Claude no dia a dia</h3><p>E-mails, mensagens difíceis, correção de textos — escreva tudo em segundos.</p></div>
+      <div class="mod" data-n="06"><h3>Estudar e organizar</h3><p>Resuma, aprenda qualquer assunto no seu nível e organize sua rotina.</p></div>
+      <div class="mod" data-n="07"><h3>Claude para o trabalho</h3><p>Planos, apresentações, propostas e planilhas. Faça mais em menos tempo.</p></div>
+      <div class="mod" data-n="08"><h3>Criando conteúdo</h3><p>Ideias, roteiros, legendas e anúncios. Nunca mais fique sem o que postar.</p></div>
+      <div class="mod" data-n="09"><h3>Recursos poderosos</h3><p>Enviar arquivos, Projetos e Artifacts. Saia do básico e destrave o potencial.</p></div>
+      <div class="mod" data-n="10"><h3>Seu assistente pessoal</h3><p>Junte tudo, crie uma rotina e veja o caminho pra gerar renda com IA.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BÔNUS / STACK ================= -->
+<section class="sec bonus-sec">
+  <div class="wrap">
+    <div class="sec-head mid">
+      <div class="kick">Não é só o ebook</div>
+      <h2>Você ainda leva todos estes bônus</h2>
+      <p class="desc">Ferramentas pra você aplicar hoje mesmo e não parar mais.</p>
+    </div>
+    <div class="stack">
+      <div class="stack-row">
+        <span class="stack-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#A78BFA" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#A78BFA" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <div class="stack-txt"><b>Ebook Claude Descomplicado</b><span>57 páginas · 10 módulos completos</span></div>
+        <div class="stack-val"><s>R$ 97</s></div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h11l3 3v13H5z" stroke="#A78BFA" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 11h8M8 15h6" stroke="#A78BFA" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <div class="stack-txt"><b>Biblioteca de 30 prompts prontos</b><span>copie, cole e adapte com os seus dados</span></div>
+        <div class="stack-val"><s>R$ 47</s></div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="#A78BFA" stroke-width="1.7"/><path d="M4 9h16M8 3v4M16 3v4" stroke="#A78BFA" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <div class="stack-txt"><b>Plano de 30 dias</b><span>um pequeno passo por dia até virar hábito</span></div>
+        <div class="stack-val"><s>R$ 37</s></div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h9l3 3v15H6z" stroke="#A78BFA" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="stack-txt"><b>Guia de bolso da Fórmula 4P</b><span>o método na palma da mão, pra imprimir</span></div>
+        <div class="stack-val"><s>R$ 27</s></div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="#A78BFA" stroke-width="1.7"/><path d="M4 20c0-3 2.5-5 5-5s5 2 5 5" stroke="#A78BFA" stroke-width="1.7" stroke-linecap="round"/><path d="M15 6l5 0M15 10l5 0M17 14l3 0" stroke="#A78BFA" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <div class="stack-txt"><b>Casos por profissão + Combos de prompts</b><span>veja você aqui e resolva tarefas grandes de ponta a ponta</span></div>
+        <div class="stack-val"><s>R$ 39</s></div>
+      </div>
+      <div class="stack-total">
+        <span class="lbl">Valor de tudo junto</span>
+        <span class="amt"><s>R$ 247</s></span>
+      </div>
+      <div class="stack-total" style="padding-top:2px">
+        <span class="lbl" style="color:var(--vs);font-weight:600">Hoje você leva por apenas</span>
+        <span class="amt" style="color:var(--amber)">R$ 57,90</span>
+      </div>
+    </div>
+    <div class="center" style="margin-top:34px">
+      <a class="cta" href="https://pay.hotmart.com/F107447209F?bid=1788400949649" target="_blank" rel="noopener">Quero tudo isso por R$ 57,90</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MÉTODO 4P ================= -->
+<section class="sec method-sec">
+  <div class="wrap">
+    <div class="sec-head mid">
+      <div class="kick">O diferencial</div>
+      <h2>O método que faz a IA te obedecer: a Fórmula 4P</h2>
+      <p class="desc">A maioria erra porque pede errado. Com estes 4 ingredientes, você monta um pedido profissional pra qualquer situação — e a resposta vem sob medida.</p>
+    </div>
+    <div class="p4">
+      <div class="p"><div class="big">P</div><b>Personagem</b><span>quem a IA deve ser</span></div>
+      <div class="p"><div class="big">P</div><b>Pedido</b><span>o que você quer</span></div>
+      <div class="p"><div class="big">P</div><b>Panorama</b><span>o contexto e os detalhes</span></div>
+      <div class="p"><div class="big">P</div><b>Padrão</b><span>o formato da resposta</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARA QUEM ================= -->
+<section class="sec who-sec">
+  <div class="wrap">
+    <div class="sec-head mid"><div class="kick">Sinceridade antes de tudo</div><h2>Este material é (e não é) pra você</h2></div>
+    <div class="who">
+      <div class="who-col yes">
+        <h3><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(53,214,164,.15)"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> É pra você se…</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Quer usar IA no dia a dia, mas se sente perdido ou com medo de errar.</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> É empreendedor, autônomo ou profissional e quer produzir mais em menos tempo.</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> É estudante ou criador de conteúdo e vive sem tempo.</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Quer um caminho claro, do zero, sem depender de vídeo solto.</li>
+        </ul>
+      </div>
+      <div class="who-col no">
+        <h3><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(245,176,65,.14)"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#F5B041" stroke-width="2.2" stroke-linecap="round"/></svg> Não é pra você se…</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="#F5B041" stroke-width="2.1" stroke-linecap="round"/></svg> Procura fórmula mágica pra "ganhar dinheiro sem fazer nada".</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="#F5B041" stroke-width="2.1" stroke-linecap="round"/></svg> Já é avançado em IA e usa a ferramenta no talo todo dia.</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 7L7 17" stroke="#F5B041" stroke-width="2.1" stroke-linecap="round"/></svg> Não está disposto a aplicar nem 15 minutos por dia.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFERTA ================= -->
+<section class="offer-sec" id="oferta">
+  <div class="wrap">
+    <div class="offer-card">
+      <span class="flag">Oferta de lançamento · 40% OFF</span>
+      <h2>Comece hoje pelo preço de um lanche</h2>
+      <div class="from">De <s>R$ 97</s> por apenas</div>
+      <div class="price"><span class="cur">R$</span><span class="val">57</span><span class="cents">,90</span></div>
+      <div class="installment">ou em <b>até 12x</b> no cartão</div>
+      <ul class="offer-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ebook completo com 57 páginas e 10 módulos</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Biblioteca de 30 prompts prontos</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Plano de 30 dias + Guia de bolso 4P</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Casos por profissão + Combos de prompts</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.5 3.5L18 7" stroke="#35D6A4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Acesso imediato e vitalício · atualizações incluídas</li>
+      </ul>
+      <a class="cta cta-big" href="https://pay.hotmart.com/F107447209F?bid=1788400949649" target="_blank" rel="noopener">Quero garantir meu acesso agora</a>
+      <div class="pay-icons">Pagamento 100% seguro pela Hotmart · cartão, Pix ou boleto</div>
+    </div>
+
+    <div class="guarantee">
+      <svg class="seal" viewBox="0 0 96 96" fill="none">
+        <circle cx="48" cy="46" r="34" fill="rgba(53,214,164,.1)" stroke="#35D6A4" stroke-width="2"/>
+        <circle cx="48" cy="46" r="27" stroke="rgba(53,214,164,.4)" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <path d="M40 46l6 6 12-13" stroke="#35D6A4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M34 74l4 12 10-7 10 7 4-12" stroke="#35D6A4" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <text x="48" y="34" font-family="Sora,sans-serif" font-size="9" font-weight="800" fill="#35D6A4" text-anchor="middle">7</text>
+      </svg>
+      <div>
+        <h3>7 dias de garantia incondicional</h3>
+        <p>Compre, leia e aplique sem risco. Se em 7 dias você achar que não é pra você, é só pedir o reembolso — direto pela Hotmart, sem burocracia e sem precisar explicar nada. O risco é todo meu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec faq-sec">
+  <div class="wrap">
+    <div class="sec-head mid"><div class="kick">Ficou alguma dúvida?</div><h2>Perguntas frequentes</h2></div>
+    <div class="faq-list">
+      <details class="faq"><summary>Preciso entender de tecnologia pra acompanhar?<span class="plus"></span></summary><div class="ans">Não. O material foi feito pra quem está começando do zero. Tudo é explicado em português simples, passo a passo, sem termo difícil. Se você usa WhatsApp, você consegue.</div></details>
+      <details class="faq"><summary>Como recebo o material depois de comprar?<span class="plus"></span></summary><div class="ans">O acesso é imediato. Assim que o pagamento é aprovado, você recebe tudo pela Hotmart e pode ler no celular, tablet ou computador — onde e quando quiser.</div></details>
+      <details class="faq"><summary>Preciso pagar alguma assinatura da IA pra usar?<span class="plus"></span></summary><div class="ans">Não. Dá pra fazer muita coisa no plano gratuito do Claude. O ebook te mostra como começar sem gastar nada e só evoluir para o plano pago se e quando você quiser.</div></details>
+      <details class="faq"><summary>Isso funciona pra minha profissão?<span class="plus"></span></summary><div class="ans">Sim. Além dos módulos, tem uma seção de casos reais por profissão (comércio, salão, saúde, ensino, autônomos, criadores e mais). A lógica se adapta a qualquer área.</div></details>
+      <details class="faq"><summary>E se eu não gostar?<span class="plus"></span></summary><div class="ans">Você tem 7 dias de garantia incondicional. Se achar que não é pra você, pede o reembolso pela Hotmart e recebe 100% do valor de volta. Simples assim.</div></details>
+      <details class="faq"><summary>Em quanto tempo vejo resultado?<span class="plus"></span></summary><div class="ans">Já no primeiro módulo você faz sua primeira tarefa com IA. Seguindo o Plano de 30 dias, em poucas semanas usar o Claude vira parte natural da sua rotina.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="final-sec">
+  <div class="wrap">
+    <h2>A IA não vai esperar você. Mas ela pode <span style="color:var(--vl)">trabalhar por você</span> a partir de hoje.</h2>
+    <p>Enquanto você decide, a tela em branco continua te travando. Dê o primeiro passo agora — com risco zero e acesso imediato.</p>
+    <a class="cta cta-big" href="https://pay.hotmart.com/F107447209F?bid=1788400949649" target="_blank" rel="noopener">Quero meu acesso por R$ 57,90</a>
+    <div class="cta-note">Acesso imediato · 7 dias de garantia · pagamento seguro pela Hotmart</div>
+  </div>
+</section>
+
+<!-- ================= RODAPÉ ================= -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand">Claude Descomplicado</div>
+    <p class="legal">Este produto é um material educativo independente e não é afiliado, patrocinado ou endossado pela Anthropic. "Claude" é uma marca de sua respectiva detentora. Os resultados podem variar de pessoa para pessoa e dependem da aplicação do conteúdo. Este site não faz parte do Facebook, Google ou Hotmart, nem é endossado por eles.</p>
+    <p>© 2025 Claude Descomplicado · Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ================= STICKY MOBILE ================= -->
+<div class="sticky-mobile">
+  <div class="sm-price"><s>R$ 97</s><b>R$ 57,90</b></div>
+  <a class="cta" href="https://pay.hotmart.com/F107447209F?bid=1788400949649" target="_blank" rel="noopener">Quero meu acesso</a>
+</div>
+
+<script>
+// smooth scroll para âncoras internas (só a #oferta é interna)
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var el=document.querySelector(this.getAttribute('href'));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});}
+  });
+});
+</script>
+</body>
+</html>
